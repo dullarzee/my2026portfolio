@@ -15,94 +15,11 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 }) => {
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [visibleProjectsCount, setVisibleProjectsCount] = useState<number>(3);
+  const [currentYear, setCurrentYear] = useState<number>(2026);
 
-  // Uber Clone Transit Simulator State
-  const [isSimulatingRoute, setIsSimulatingRoute] = useState<boolean>(false);
-  const [simProgress, setSimProgress] = useState<number>(0);
-  const [routeEtaMin, setRouteEtaMin] = useState<number>(22);
-  const [routeDistKm, setRouteDistKm] = useState<number>(14.2);
-
-  // Teazy Tech CMS preview state
-  const [activeTeazyCard, setActiveTeazyCard] = useState<"ai" | "stem">("ai");
-
-  // Moniepoint dual portal state
-  const [moniepointPortal, setMoniepointPortal] = useState<"biz" | "personal">(
-    "biz",
-  );
-  const [transactions, setTransactions] = useState([
-    {
-      id: "tx-1",
-      title: "Settlement Payout #892",
-      channel: "Merchant POS Gateway",
-      amount: "+$2,450.00",
-      type: "credit",
-      portal: "biz",
-    },
-    {
-      id: "tx-2",
-      title: "Virtual Corporate Card Provision",
-      channel: "Authorized Entity",
-      amount: "-$120.00",
-      type: "debit",
-      portal: "biz",
-    },
-    {
-      id: "tx-3",
-      title: "Instant Savings Interest Credited",
-      channel: "High-Yield Vault",
-      amount: "+$34.50",
-      type: "credit",
-      portal: "personal",
-    },
-    {
-      id: "tx-4",
-      title: "Airtime & Utilities Billpay",
-      channel: "Direct Debit API",
-      amount: "-$25.00",
-      type: "debit",
-      portal: "personal",
-    },
-  ]);
-
-  // Handle route animation
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isSimulatingRoute) {
-      timer = setInterval(() => {
-        setSimProgress((prev) => {
-          if (prev >= 100) {
-            setIsSimulatingRoute(false);
-            return 0;
-          }
-          const next = prev + 5;
-          setRouteDistKm(Number((14.2 * (1 - next / 100)).toFixed(1)));
-          setRouteEtaMin(Math.max(1, Math.round(22 * (1 - next / 100))));
-          return next;
-        });
-      }, 350);
-    }
-    return () => clearInterval(timer);
-  }, [isSimulatingRoute]);
-
-  const handleAddTransaction = () => {
-    const isCredit = Math.random() > 0.4;
-    const amountVal = (Math.random() * 800 + 50).toFixed(2);
-    const newTx = {
-      id: `tx-${Date.now()}`,
-      title:
-        moniepointPortal === "biz"
-          ? `Vendor Invoice Settlement #${Math.floor(Math.random() * 900 + 100)}`
-          : `Card Payment Transfer #${Math.floor(Math.random() * 500 + 10)}`,
-      channel:
-        moniepointPortal === "biz"
-          ? "Merchant Treasury Rail"
-          : "Personal Wallet",
-      amount: `${isCredit ? "+" : "-"}$${amountVal}`,
-      type: isCredit ? "credit" : "debit",
-      portal: moniepointPortal,
-    };
-    setTransactions([newTx, ...transactions.slice(0, 5)]);
-  };
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (filterCategory === "all") return true;
@@ -120,10 +37,6 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
     setVisibleProjectsCount(3);
   }, [filterCategory]);
 
-  const uberProject = PROJECTS.find((p) => p.id === "uber-clone")!;
-  const teazyProject = PROJECTS.find((p) => p.id === "teazy-tech")!;
-  const moniepointProject = PROJECTS.find((p) => p.id === "moniepoint-clone")!;
-
   return (
     <section id="work" className="w-full px-5 md:px-12 lg:px-20 py-16 md:py-24">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
@@ -137,7 +50,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
               <span className="material-symbols-outlined text-[16px]">
                 folder_special
               </span>
-              <span>Selected Projects · 2024–{new Date().getFullYear()}</span>
+              <span>Selected Projects · 2024–{currentYear}</span>
             </div>
             <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight">
               Ideas made tangible.
