@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ProjectInquiry } from "../types";
-import { Reveal } from "@/components/Reveal";
+import ResendController from "@/controllers/ResendController";
 
 interface ContactSectionProps {
   preFillType?: string;
@@ -54,6 +54,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       }),
     };
 
+    const resp = ResendController(newInquiry);
+
     setInquiries([newInquiry, ...inquiries]);
     setSubmitted(true);
     setFormData({
@@ -77,7 +79,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     >
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
         {/* Left Column: Context & Direct Contact Coordinates */}
-        <Reveal className="lg:col-span-5 flex flex-col gap-4" delay={0.08}>
+        <div className="lg:col-span-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-widest">
             <span className="material-symbols-outlined text-[16px]">
               alternate_email
@@ -220,10 +222,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               ))}
             </div>
           )}
-        </Reveal>
+        </div>
 
         {/* Right Column: Interactive Project Enquiry Form */}
-        <Reveal className="lg:col-span-7" delay={0.14}>
+        <div className="lg:col-span-7">
           <form
             onSubmit={handleSubmit}
             className="rounded-xl bg-[#1b1c1e] border border-[#444932]/60 p-6 md:p-8 flex flex-col gap-4 shadow-2xl relative"
@@ -424,7 +426,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
             )}
           </form>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
