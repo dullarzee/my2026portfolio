@@ -100,7 +100,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-tom font helpers & typography */ .font-display-hero {
+/* Font helpers & typography */
+.font-display-hero {
   font-family: "Syne", sans-serif;
   letter-spacing: -0.04em;
   font-weight: 800;

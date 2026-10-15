@@ -36,7 +36,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
   }, [preFillMessage]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
@@ -54,7 +54,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       }),
     };
 
-    const resp = ResendController(newInquiry);
+    await ResendController(newInquiry);
 
     setInquiries([newInquiry, ...inquiries]);
     setSubmitted(true);
@@ -77,7 +77,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       id="contact"
       className="w-full px-5 md:px-12 lg:px-20 py-16 md:py-24"
     >
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+      <div className="max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
         {/* Left Column: Context & Direct Contact Coordinates */}
         <div className="lg:col-span-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-widest">
@@ -101,14 +101,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           <div className="flex flex-col gap-3 pt-4">
             <a
               href="mailto:timilehin0303@gmail.com"
-              className="p-3.5 rounded bg-[#1b1c1e] border border-[#444932]/40 flex items-center justify-between hover:border-[#caf300] group transition-all"
+              className="p-3.5 rounded bg-surface-container-low border border-outline-variant/40 flex items-center justify-between hover:border-[#caf300] group transition-all"
             >
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-[#caf300] text-[20px]">
                   mail
                 </span>
                 <div className="flex flex-col">
-                  <span className="font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac]">
+                  <span className="font-['JetBrains_Mono'] text-[11px] text-on-surface-variant">
                     DIRECT DISPATCH
                   </span>
                   <span className="font-['JetBrains_Mono'] text-[13px] text-white group-hover:text-[#caf300] transition-colors">
@@ -116,7 +116,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   </span>
                 </div>
               </div>
-              <span className="material-symbols-outlined text-[#c5c9ac] text-[18px]">
+              <span className="material-symbols-outlined text-on-surface-variant text-[18px]">
                 arrow_outward
               </span>
             </a>
@@ -125,7 +125,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               href="https://github.com/dullarzee"
               target="_blank"
               rel="noreferrer"
-              className="p-3.5 rounded bg-[#1b1c1e] border border-[#444932]/40 flex items-center justify-between hover:border-[#caf300] group transition-all"
+              className="p-3.5 rounded bg-surface-container-low border border-outline-variant/40 flex items-center justify-between hover:border-[#caf300] group transition-all"
             >
               <div className="flex items-center gap-3">
                 <span className="material-symbols-outlined text-[#caf300] text-[20px]">
