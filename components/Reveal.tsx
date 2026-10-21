@@ -27,7 +27,7 @@ export const Reveal: React.FC<RevealProps> = ({
   const isInView = useInView(ref, {
     once: once,
     amount: Math.min(Math.max(amount, 0.1), 0.5),
-    margin: "0px 0px 20% 0px",
+    margin: "0px 0px 15% 0px",
   });
 
   return (
