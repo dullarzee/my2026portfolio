@@ -90,7 +90,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           {project.images?.length > 0 && (
             <div className="flex flex-col gap-3 items-center">
               <div className="relative overflow-hidden lg:w-4/5 rounded-xl border border-[#292a2c] bg-[#0d0e10]">
-                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <div className="relative aspect-video w-full overflow-hidden">
                   <img
                     src={project.images[currentImageIndex]}
                     alt={`${project.title} preview ${currentImageIndex + 1}`}
@@ -152,7 +152,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
           )}
 
           {/* Metrics Strip */}
-          <div className="grid grid-cols-3 gap-3 p-4 rounded-lg bg-[#0d0e10] border border-[#292a2c]">
+          <div className="grid grid-cols-3 gap-3 p-4 rounded-lg dark:bg-[#0d0e10] border border-[#292a2c]">
             {project.architectureDetails.metrics.map((m) => (
               <div key={m.label} className="flex flex-col">
                 <span className="font-['JetBrains_Mono'] text-[10px] text-[#c5c9ac] uppercase">
@@ -201,7 +201,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               {project.architectureDetails.keyDecisions.map((decision, idx) => (
                 <li
                   key={idx}
-                  className="flex items-start gap-2 p-2 rounded bg-[#1f2022]/60"
+                  className="flex items-start gap-2 p-2 rounded dark:bg-[#1f2022]/60"
                 >
                   <span className="text-[#caf300] font-['JetBrains_Mono'] text-[11px] font-bold mt-0.5">
                     0{idx + 1}.

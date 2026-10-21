@@ -15,11 +15,8 @@ import { Footer } from "@/components/Footer";
 import { ProjectModal } from "@/components/ProjectModal";
 import { AuditModal } from "@/components/AuditModal";
 import { ProjectItem } from "@/types";
-import { useDarkThemeInit } from "@/util";
 
 export default function homePage() {
-  const theme = useDarkThemeInit();
-  console.log(theme);
   const [activeSection, setActiveSection] = useState<string>("work");
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null,
@@ -87,12 +84,12 @@ export default function homePage() {
   };
 
   return (
-    <div className="bg-[#121315] text-[#e3e2e5] min-h-screen font-['Plus_Jakarta_Sans'] selection:bg-[#caf300] selection:text-[#596c00]">
+    <div className="min-h-screen bg-[var(--page-bg)] text-[var(--text)] font-['Plus_Jakarta_Sans'] transition-colors duration-300 selection:bg-[#caf300] selection:text-[#596c00]">
       {/* Fixed Sticky Header */}
       <Header activeSection={activeSection} onStartProject={scrollToContact} />
 
       {/* Main Content Sections */}
-      <main className="w-full pt-20 bg-[#121315]">
+      <main className="w-full pt-20 bg-[var(--page-bg)]">
         {/* 01. HERO SECTION */}
         <HeroSection
           onExploreWork={scrollToWork}

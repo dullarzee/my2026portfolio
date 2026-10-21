@@ -9,6 +9,7 @@ interface RevealProps extends HTMLMotionProps<"div"> {
   x?: number;
   duration?: number;
   amount?: number;
+  once: boolean;
 }
 
 export const Reveal: React.FC<RevealProps> = ({
@@ -19,13 +20,14 @@ export const Reveal: React.FC<RevealProps> = ({
   x = 0,
   duration = 0.7,
   amount = 0.18,
+  once,
   ...rest
 }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, {
-    once: false,
-    amount,
-    margin: "-8% 0px -8% 0px",
+    once: once,
+    amount: Math.min(Math.max(amount, 0.1), 0.5),
+    margin: "0px 0px 20% 0px",
   });
 
   return (

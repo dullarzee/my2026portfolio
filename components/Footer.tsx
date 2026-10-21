@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="w-full bg-[#0d0e10] border-t border-[#343537]/60">
+    <footer className="w-full bg-white dark:bg-[#0d0e10] border-t border-[#343537]/60">
       <div className="w-full px-5 md:px-12 lg:px-20 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-16">
           {/* Brand & Manifesto */}
@@ -134,7 +134,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom copyright and Back to Top */}
-        <Reveal className="pt-6 border-t border-[#292a2c]/50 flex flex-col sm:flex-row items-center justify-between gap-4" delay={0.2}>
+        <Reveal
+          className="pt-6 border-t border-[#292a2c]/50 flex flex-col sm:flex-row items-center justify-between gap-4"
+          delay={0.2}
+        >
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac] flex-wrap justify-center sm:justify-start">
             <span>© 2026 Devzee Solutions</span>
             <span>•</span>

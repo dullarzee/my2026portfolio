@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
-import { ENGINEERING_STACK } from '../data/portfolioData';
-import { Reveal } from '@/components/Reveal';
+import React, { useState } from "react";
+import { ENGINEERING_STACK } from "../data/portfolioData";
+import { Reveal } from "@/components/Reveal";
 
 export const EngineeringSection: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const activeItem = ENGINEERING_STACK.find((item) => item.id === activeCategory);
+  const activeItem = ENGINEERING_STACK.find(
+    (item) => item.id === activeCategory,
+  );
 
   return (
     <section
       id="engineering"
       className="w-full px-5 md:px-12 lg:px-20 py-16 md:py-24"
     >
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
+      <div className="max-w-360 mx-auto flex flex-col gap-16">
         {/* Section Header */}
         <Reveal className="flex flex-col gap-2 max-w-3xl" delay={0.08}>
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-widest">
-            <span className="material-symbols-outlined text-[16px]">memory</span>
+            <span className="material-symbols-outlined text-[16px]">
+              memory
+            </span>
             <span>Technical Architecture</span>
           </div>
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight">
             The interface is only the beginning.
           </h2>
           <p className="font-['Plus_Jakarta_Sans'] text-lg sm:text-[18px] text-[#c5c9ac] leading-relaxed">
-            I care about how software feels to use, how it behaves under the hood, and how easily it can evolve as requirements grow.
+            I care about how software feels to use, how it behaves under the
+            hood, and how easily it can evolve as requirements grow.
           </p>
         </Reveal>
 
@@ -38,8 +43,8 @@ export const EngineeringSection: React.FC = () => {
                 onClick={() => setActiveCategory(isSelected ? null : item.id)}
                 className={`p-6 rounded-lg bg-[#1b1c1e] border transition-all cursor-pointer flex flex-col gap-4 group ${
                   isSelected
-                    ? 'border-[#caf300] shadow-[0_0_24px_rgba(202,243,0,0.15)] ring-1 ring-[#caf300]'
-                    : 'border-[#444932]/40 hover:border-[#caf300]/80'
+                    ? "border-[#caf300] shadow-[0_0_24px_rgba(202,243,0,0.15)] ring-1 ring-[#caf300]"
+                    : "border-[#444932]/40 hover:border-[#caf300]/80"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -61,7 +66,7 @@ export const EngineeringSection: React.FC = () => {
                 </div>
 
                 {isSelected && (
-                  <div className="p-3 rounded bg-[#0d0e10] border border-[#444932]/50 text-[12px] font-['Plus_Jakarta_Sans'] text-[#e3e2e5] leading-relaxed animate-in fade-in duration-200">
+                  <div className="p-3 rounded dark:bg-[#0d0e10] border border-[#444932]/50 text-[12px] font-['Plus_Jakarta_Sans'] text-[#e3e2e5] leading-relaxed animate-in fade-in duration-200">
                     <span className="font-['JetBrains_Mono'] text-[10px] text-[#caf300] block mb-1 font-bold uppercase">
                       Architecture Principles:
                     </span>

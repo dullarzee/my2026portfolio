@@ -39,7 +39,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
   return (
     <section id="work" className="w-full px-5 md:px-12 lg:px-20 py-16 md:py-24">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
+      <div className="max-w-360 mx-auto flex flex-col gap-16">
         {/* Section Header */}
         <Reveal
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#292a2c]/60 pb-8"
@@ -133,7 +133,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
                   Math.min(prev + 3, filteredProjects.length),
                 )
               }
-              className="inline-flex items-center justify-center rounded-full border border-[#caf300]/60 bg-[#101214] px-5 py-3 text-sm font-medium text-[#caf300] transition hover:border-[#caf300] hover:bg-[#caf300] hover:text-[#12170c]"
+              className="inline-flex items-center justify-center rounded-full border border-[#caf300]/60 dark:bg-[#101214] px-5 py-3 text-sm font-medium text-[#caf300] transition hover:border-[#caf300] hover:bg-[#caf300] hover:text-[#12170c]"
             >
               Show more
             </button>
@@ -142,7 +142,7 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({
 
         {/* More Work GitHub Callout Banner */}
         <Reveal
-          className="w-full rounded-xl bg-[#0d0e10] border border-[#444932]/40 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+          className="w-full rounded-xl dark:bg-[#0d0e10] border border-[#444932]/40 shadow-xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
           delay={0.2}
         >
           <div className="flex items-center gap-4">

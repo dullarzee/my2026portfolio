@@ -8,7 +8,6 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { useDarkThemeInit } from "@/util";
 
 export const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable} ${syne.variable} h-full antialiased`}
     >
       <head>
@@ -56,7 +56,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="my2026portfolio-theme"
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

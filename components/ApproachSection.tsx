@@ -1,47 +1,51 @@
-import React from 'react';
-import { Reveal } from '@/components/Reveal';
+import React from "react";
+import { Reveal } from "@/components/Reveal";
 
 export const ApproachSection: React.FC = () => {
   const stages = [
     {
-      num: '01',
-      title: 'Understand',
-      desc: 'Clarify the core business problem, end users, constraints, scope, and concrete success metrics prior to writing a line of code.',
+      num: "01",
+      title: "Understand",
+      desc: "Clarify the core business problem, end users, constraints, scope, and concrete success metrics prior to writing a line of code.",
     },
     {
-      num: '02',
-      title: 'Plan & Design',
-      desc: 'Map out user flows, state contracts, database entities, and component hierarchies before starting technical implementation.',
+      num: "02",
+      title: "Plan & Design",
+      desc: "Map out user flows, state contracts, database entities, and component hierarchies before starting technical implementation.",
     },
     {
-      num: '03',
-      title: 'Build & Validate',
-      desc: 'Develop interfaces and backend systems in tandem. Author Playwright automated tests across mission-critical pathways.',
+      num: "03",
+      title: "Build & Validate",
+      desc: "Develop interfaces and backend systems in tandem. Author Playwright automated tests across mission-critical pathways.",
     },
     {
-      num: '04',
-      title: 'Deliver & Improve',
-      desc: 'Prepare the product for seamless cloud deployment, review performance diagnostics, and map immediate next-generation enhancements.',
+      num: "04",
+      title: "Deliver & Improve",
+      desc: "Prepare the product for seamless cloud deployment, review performance diagnostics, and map immediate next-generation enhancements.",
     },
   ];
 
   return (
     <section
       id="approach"
-      className="w-full bg-[#0d0e10] border-y border-[#343537]/60 py-16 md:py-24"
+      className="w-full border-y border-gray-300 dark:border-[#343537]/60 py-16 md:py-24"
     >
-      <div className="max-w-[1440px] mx-auto px-5 md:px-12 lg:px-20 flex flex-col gap-16">
+      <div className="max-w-360 mx-auto px-5 md:px-12 lg:px-20 flex flex-col gap-16">
         {/* Section Header */}
         <Reveal className="flex flex-col gap-2 max-w-3xl" delay={0.08}>
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-widest">
-            <span className="material-symbols-outlined text-[16px]">account_tree</span>
+            <span className="material-symbols-outlined text-[16px]">
+              account_tree
+            </span>
             <span>Methodology</span>
           </div>
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight">
             Good software is built with intention.
           </h2>
           <p className="font-['Plus_Jakarta_Sans'] text-[15px] text-[#c5c9ac] leading-relaxed">
-            A disciplined, step-by-step engineering practice that minimizes ambiguity and delivers software ready for high-concurrency production.
+            A disciplined, step-by-step engineering practice that minimizes
+            ambiguity and delivers software ready for high-concurrency
+            production.
           </p>
         </Reveal>
 

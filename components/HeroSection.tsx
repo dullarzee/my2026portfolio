@@ -3,6 +3,7 @@ import { CODE_SNIPPETS, PROFILE_IMAGE } from "../data/portfolioData";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
+import MyImageCard from "./myImageCard";
 
 interface HeroSectionProps {
   onExploreWork: () => void;
@@ -29,21 +30,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative w-full px-5 md:px-12 lg:px-20 pt-12 pb-24 overflow-hidden">
       {/* Ambient subtle chartreuse glow blooms */}
-      <div className="absolute -top-32 right-1/4 w-[540px] h-[540px] bg-[#caf300]/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
-      <div className="absolute top-1/2 left-0 w-[420px] h-[420px] bg-[#292a2c]/40 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+      <div className="absolute -top-32 right-1/4 w-135 h-135 bg-[#caf300]/18 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+      <div className="absolute top-1/2 left-0 w-105 h-105 bg-slate-200/70 rounded-full blur-[160px] pointer-events-none -z-10 dark:bg-[#292a2c]/40"></div>
 
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
+      <div className="max-w-360 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
         {/* Left Column: Editorial Headline & Identity */}
         <Reveal className="lg:col-span-7 flex flex-col gap-4" delay={0.08}>
           {/* Eyebrow Pill */}
           <motion.div className="flex items-center gap-2 flex-wrap">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#1b1c1e] border border-[#444932]/50">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/80 border border-slate-200 text-slate-800 shadow-sm dark:bg-[#1b1c1e] dark:border-[#444932]/50 dark:text-white">
               <span className="w-2 h-2 rounded-full bg-[#caf300] shadow-[0_0_8px_#caf300] animate-pulse"></span>
-              <span className="font-['JetBrains_Mono'] text-[11px] tracking-widest text-white uppercase font-semibold">
+              <span className="font-['JetBrains_Mono'] text-[11px] tracking-widest uppercase font-semibold">
                 INDEPENDENT DEVELOPER · DEVZEE SOLUTIONS
               </span>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#1b1c1e]/70 border border-[#444932]/30 text-[#c5c9ac] font-['JetBrains_Mono'] text-[11px]">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-white/70 border border-slate-200 text-slate-600 font-['JetBrains_Mono'] text-[11px] dark:bg-[#1b1c1e]/70 dark:border-[#444932]/30 dark:text-[#c5c9ac]">
               <span className="material-symbols-outlined text-[14px] text-[#caf300]">
                 near_me
               </span>
@@ -52,50 +53,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </motion.div>
 
           {/*my profile pic*/}
-          <div className="lg:hidden lg:col-span-5 relative">
-            <div className="rounded-xl bg-[#1b1c1e] border border-[#444932]/60 p-4 sm:p-5 flex flex-col gap-4 relative overflow-hidden shadow-2xl">
-              {/* Developer Studio Portrait */}
-              <div className="aspect-square w-full rounded-lg bg-[#343537] relative overflow-hidden flex items-center justify-center">
-                <Image
-                  alt="Dullarzee / Devzee Solutions"
-                  className="w-full h-full object-cover object-center lg:grayscale lg:hover:grayscale-0 transition-all duration-500"
-                  src={PROFILE_IMAGE.src}
-                  width={PROFILE_IMAGE.width}
-                  height={PROFILE_IMAGE.height}
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute bottom-3 left-3 bg-[#121315]/90 backdrop-blur-md px-3 py-1 rounded border border-[#444932]/50 font-['JetBrains_Mono'] text-[11px] text-[#caf300] font-semibold">
-                  TIMI // PRINCIPAL
-                </div>
-              </div>
-
-              {/* Studio telemetry card */}
-              <div className="flex items-center justify-between p-3 rounded bg-[#1f2022]/60 border border-[#444932]/30 font-['JetBrains_Mono'] text-[11px]">
-                <span className="text-[#c5c9ac]">
-                  LOC: LAGOS, NG · WAT (UTC+1)
-                </span>
-                <span className="text-[#caf300] font-bold">
-                  STATUS: AVAILABLE
-                </span>
-              </div>
-            </div>
+          <div className="block lg:hidden">
+            <MyImageCard />
           </div>
 
           {/* Master Headline */}
-          <h1 className="font-['Syne'] text-4xl sm:text-5xl md:text-7xl lg:text-[80px] text-white font-extrabold tracking-tighter leading-[0.98] mt-2">
+          <h1 className="font-['Syne'] text-4xl sm:text-5xl md:text-7xl lg:text-[80px] text-slate-950 font-extrabold tracking-tighter leading-[0.98] mt-2 dark:text-white">
             Curious by nature.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#e3e2e5] to-[#caf300]">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-slate-900 via-slate-700 dark: to-[#caf300] dark:from-white dark:via-[#e3e2e5] dark:to-[#caf300]">
               Serious about software.
             </span>
           </h1>
 
           {/* Supporting Statement & Subline */}
-          <p className="font-['Plus_Jakarta_Sans'] text-lg sm:text-[18px] text-[#e3e2e5] max-w-2xl leading-relaxed mt-2">
+          <p className="font-['Plus_Jakarta_Sans'] text-lg sm:text-[18px] text-slate-700 max-w-2xl leading-relaxed mt-2 dark:text-[#e3e2e5]">
             I design and build thoughtful digital experiences — from polished
             web interfaces to full-stack systems that solve real problems.
           </p>
-          <p className="font-['Plus_Jakarta_Sans'] text-[15px] text-[#c5c9ac] max-w-xl leading-relaxed">
+          <p className="font-['Plus_Jakarta_Sans'] text-[15px] text-slate-600 max-w-xl leading-relaxed dark:text-[#c5c9ac]">
             Frontend-focused full-stack developer building for people,
             businesses, and ambitious ideas. Translating complex system
             requirements into fast, tactile, and resilient user interfaces.
@@ -124,22 +100,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Technical Signature Strip */}
-          <div className="pt-6 mt-4 border-t border-[#292a2c]/60 flex items-center flex-wrap gap-y-2 gap-x-4 text-[#c5c9ac] font-['JetBrains_Mono'] text-[13px]">
-            <span className="text-white font-medium">Core Toolkit:</span>
-            <span className="hover:text-white transition-colors">React</span>
-            <span className="text-[#444932]">•</span>
-            <span className="hover:text-white transition-colors">
+          <div className="pt-6 mt-4 border-t border-slate-200/80 flex items-center flex-wrap gap-y-2 gap-x-4 text-slate-600 font-['JetBrains_Mono'] text-[13px] dark:border-[#292a2c]/60 dark:text-[#c5c9ac]">
+            <span className="text-slate-900 font-medium dark:text-white">
+              Core Toolkit:
+            </span>
+            <span className="hover:text-slate-900 transition-colors dark:hover:text-white">
+              React
+            </span>
+            <span className="text-slate-400 dark:text-[#444932]">•</span>
+            <span className="hover:text-slate-900 transition-colors dark:hover:text-white">
               TypeScript
             </span>
-            <span className="text-[#444932]">•</span>
-            <span className="hover:text-white transition-colors">Next.js</span>
-            <span className="text-[#444932]">•</span>
-            <span className="hover:text-white transition-colors">Node.js</span>
-            <span className="text-[#444932]">•</span>
-            <span className="hover:text-white transition-colors">
+            <span className="text-slate-400 dark:text-[#444932]">•</span>
+            <span className="hover:text-slate-900 transition-colors dark:hover:text-white">
+              Next.js
+            </span>
+            <span className="text-slate-400 dark:text-[#444932]">•</span>
+            <span className="hover:text-slate-900 transition-colors dark:hover:text-white">
+              Node.js
+            </span>
+            <span className="text-slate-400 dark:text-[#444932]">•</span>
+            <span className="hover:text-slate-900 transition-colors dark:hover:text-white">
               Tailwind CSS
             </span>
-            <span className="text-[#444932]">•</span>
+            <span className="text-slate-400 dark:text-[#444932]">•</span>
             <span className="text-[#caf300] font-medium">PostgreSQL</span>
           </div>
         </Reveal>
@@ -153,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <span className="w-3 h-3 rounded-full bg-[#ffb4ab]/80 inline-block"></span>
                 <span className="w-3 h-3 rounded-full bg-[#464951] inline-block"></span>
                 <span className="w-3 h-3 rounded-full bg-[#caf300]/90 inline-block"></span>
-                <span className="ml-2 font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac] tracking-wider truncate max-w-[150px] sm:max-w-none">
+                <span className="ml-2 font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac] tracking-wider truncate max-w-37.5 sm:max-w-none">
                   {currentSnippet.filename}
                 </span>
               </div>
@@ -192,7 +176,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             
-            <pre className="font-['JetBrains_Mono'] text-[12px] sm:text-[13px] text-[#c5c9ac] leading-relaxed overflow-x-auto p-3 bg-[#0d0e10]/80 rounded border border-[#292a2c]/60 min-h-[180px]">
+            <pre className="font-['JetBrains_Mono'] text-[12px] sm:text-[13px] text-[#c5c9ac] leading-relaxed overflow-x-auto p-3 bg-[#0d0e10]/80 rounded border border-[#292a2c]/60 min-h-45">
               <code>
                 {currentSnippet.code.split("\n").map((line, idx) => {
                   const match = line.match(/^(\d+)\s+(.*)$/);
@@ -317,32 +301,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </div> */}
 
         <div className="hidden lg:block lg:col-span-5 relative">
-          <div className="rounded-xl bg-[#1b1c1e] border border-[#444932]/60 p-4 sm:p-5 flex flex-col gap-4 relative overflow-hidden shadow-2xl">
-            {/* Developer Studio Portrait */}
-            <div className="aspect-square w-full rounded-lg bg-[#343537] relative overflow-hidden flex items-center justify-center">
-              <Image
-                alt="Dullarzee / Devzee Solutions"
-                className="w-full h-full object-cover object-center lg:grayscale lg:hover:grayscale-0 transition-all duration-500"
-                src={PROFILE_IMAGE.src}
-                width={PROFILE_IMAGE.width}
-                height={PROFILE_IMAGE.height}
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-3 left-3 bg-[#121315]/90 backdrop-blur-md px-3 py-1 rounded border border-[#444932]/50 font-['JetBrains_Mono'] text-[11px] text-[#caf300] font-semibold">
-                TIMI // PRINCIPAL
-              </div>
-            </div>
-
-            {/* Studio telemetry card */}
-            <div className="flex items-center justify-between p-3 rounded bg-[#1f2022]/60 border border-[#444932]/30 font-['JetBrains_Mono'] text-[11px]">
-              <span className="text-[#c5c9ac]">
-                LOC: LAGOS, NG · WAT (UTC+1)
-              </span>
-              <span className="text-[#caf300] font-bold">
-                STATUS: AVAILABLE
-              </span>
-            </div>
-          </div>
+          <MyImageCard />
         </div>
       </div>
     </section>

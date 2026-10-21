@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { PROFILE_IMAGE } from "../data/portfolioData";
 import Image from "next/image";
 
@@ -11,9 +12,14 @@ export const Header: React.FC<HeaderProps> = ({
   onStartProject,
   activeSection,
 }) => {
-  const [isDark, setIsDark] = useState<boolean>(true);
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,15 +29,10 @@ export const Header: React.FC<HeaderProps> = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isDark = mounted && resolvedTheme === "dark";
+
   const toggleDarkMode = () => {
-    const root = document.documentElement;
-    if (root.classList.contains("dark")) {
-      root.classList.remove("dark");
-      setIsDark(false);
-    } else {
-      root.classList.add("dark");
-      setIsDark(true);
-    }
+    setTheme(isDark ? "light" : "dark");
   };
 
   const navLinks = [
@@ -59,8 +60,8 @@ export const Header: React.FC<HeaderProps> = ({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#121315]/95 backdrop-blur-xl border-b border-[#343537]/80 shadow-lg"
-          : "bg-[#121315]/85 backdrop-blur-xl border-b border-[#343537]/60"
+          ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/80 shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:bg-[#121315]/95 dark:border-[#343537]/80"
+          : "bg-white/70 backdrop-blur-xl border-b border-slate-200/80 dark:bg-[#121315]/85 dark:border-[#343537]/60"
       }`}
     >
       <div className="h-20 w-full px-5 md:px-12 lg:px-20 flex items-center justify-between gap-4">
@@ -76,23 +77,23 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="font-['Syne'] text-2xl font-bold tracking-tight text-white group-hover:text-[#caf300] transition-colors">
+                <span className="font-['Syne'] text-2xl font-bold tracking-tight text-slate-900 group-hover:text-[#caf300] transition-colors dark:text-white">
                   {`<TIMI />`}
                 </span>
-                <span className="font-['JetBrains_Mono'] text-[11px] text-[#caf300] bg-[#1f2022] px-1.5 py-0.5 rounded uppercase tracking-widest border border-[#444932]/40">
+                <span className="font-['JetBrains_Mono'] text-[11px] text-[#caf300] bg-[#eef2d1] px-1.5 py-0.5 rounded uppercase tracking-widest border border-[#d4e28e] dark:bg-[#1f2022] dark:border-[#444932]/40">
                   Studio
                 </span>
               </div>
-              <span className="font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac] uppercase tracking-widest">
+              <span className="font-['JetBrains_Mono'] text-[11px] text-slate-600 uppercase tracking-widest dark:text-[#c5c9ac]">
                 Devzee Solutions
               </span>
             </div>
           </a>
 
           {/* Availability Status Badge */}
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-[#1b1c1e] border border-[#444932]/30">
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 dark:bg-[#1b1c1e] dark:border-[#444932]/30 dark:text-[#c5c9ac]">
             <span className="w-2 h-2 rounded-full bg-[#caf300] animate-pulse"></span>
-            <span className="font-['JetBrains_Mono'] text-[11px] text-[#c5c9ac]">
+            <span className="font-['JetBrains_Mono'] text-[11px]">
               Currently available for engagements
             </span>
           </div>
@@ -110,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({
                 className={`font-['Plus_Jakarta_Sans'] text-[13px] tracking-wide transition-colors whitespace-nowrap ${
                   isActive
                     ? "text-[#caf300] font-semibold"
-                    : "text-[#c5c9ac] hover:text-white"
+                    : "text-slate-600 hover:text-slate-900 dark:text-[#c5c9ac] dark:hover:text-white"
                 }`}
               >
                 {link.label}
@@ -121,18 +122,6 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Right Action Zone */}
         <div className="flex items-center gap-2 sm:gap-4">
-          {/* Color Mode Toggle */}
-          <button
-            aria-label="Toggle color mode"
-            onClick={toggleDarkMode}
-            className="w-9 h-9 rounded flex items-center justify-center bg-[#1b1c1e] border border-[#444932]/40 text-[#c5c9ac] hover:text-[#caf300] hover:border-[#caf300]/40 transition-colors"
-            type="button"
-          >
-            <span className="material-symbols-outlined text-[18px]">
-              {isDark ? "light_mode" : "dark_mode"}
-            </span>
-          </button>
-
           {/* Start a Project Action Button */}
           <button
             onClick={onStartProject}
@@ -140,6 +129,17 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
           >
             Start a Project
+          </button>
+
+          <button
+            type="button"
+            aria-label="Toggle dark mode"
+            onClick={toggleDarkMode}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-slate-800 transition-colors hover:border-[#caf300] hover:text-[#caf300] dark:border-[#444932]/40 dark:bg-[#1b1c1e] dark:text-[#e3e2e5]"
+          >
+            <span className="material-symbols-outlined text-[18px]">
+              {mounted && isDark ? "light_mode" : "dark_mode"}
+            </span>
           </button>
 
           {/* Profile Thumbnail with hotlink and fallback */}
@@ -177,14 +177,14 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#121315] border-b border-[#343537] px-5 py-6 flex flex-col gap-4 animate-in slide-in-from-top duration-200">
-          <div className="flex items-center justify-between pb-3 border-b border-[#292a2c]">
+        <div className="lg:hidden bg-white/90 border-b border-slate-200 px-5 py-6 flex flex-col gap-4 animate-in slide-in-from-top duration-200 dark:bg-[#121315] dark:border-[#343537]">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-[#292a2c]">
             <span className="font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-wider">
               Navigation Menu
             </span>
-            <span className="flex items-center gap-1.5 font-['JetBrains_Mono'] text-[10px] text-[#c5c9ac]">
+            <span className="flex items-center gap-1.5 font-['JetBrains_Mono'] text-[10px] text-slate-600 dark:text-[#c5c9ac]">
               <span className="w-2 h-2 rounded-full bg-[#caf300] animate-pulse"></span>
-              Available for Q2/Q3
+              Currently available for engagements
             </span>
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -195,8 +195,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`px-3 py-2.5 rounded font-['Plus_Jakarta_Sans'] text-sm tracking-wide transition-colors ${
                   activeSection === link.id
-                    ? "bg-[#1f2022] text-[#caf300] font-semibold border border-[#444932]/60"
-                    : "text-[#c5c9ac] hover:text-white hover:bg-[#1b1c1e]"
+                    ? "bg-[#eef3d3] text-[#2a3400] font-semibold border border-[#dfe9b7] dark:bg-[#1f2022] dark:text-[#caf300] dark:border-[#444932]/60"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-[#c5c9ac] dark:hover:text-white dark:hover:bg-[#1b1c1e]"
                 }`}
               >
                 {link.label}

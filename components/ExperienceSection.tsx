@@ -1,14 +1,16 @@
-import React from 'react';
-import { Reveal } from '@/components/Reveal';
+import React from "react";
+import { Reveal } from "@/components/Reveal";
 
 export const ExperienceSection: React.FC = () => {
   return (
-    <section className="w-full bg-[#0d0e10] border-t border-[#343537]/60 py-16 md:py-24">
-      <div className="max-w-[1440px] mx-auto px-5 md:px-12 lg:px-20 flex flex-col gap-16">
+    <section className="w-full border-t border-gray-300 dark:border-[#343537]/60 py-16 md:py-24">
+      <div className="max-w-360 mx-auto px-5 md:px-12 lg:px-20 flex flex-col gap-16">
         {/* Section Header */}
         <Reveal className="flex flex-col gap-2 max-w-3xl" delay={0.08}>
           <div className="flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-[#caf300] uppercase tracking-widest">
-            <span className="material-symbols-outlined text-[16px]">history_edu</span>
+            <span className="material-symbols-outlined text-[16px]">
+              history_edu
+            </span>
             <span>Track Record</span>
           </div>
           <h2 className="font-['Syne'] text-3xl sm:text-4xl md:text-5xl text-white font-bold tracking-tight">
@@ -20,7 +22,9 @@ export const ExperienceSection: React.FC = () => {
           {/* Experience Column */}
           <Reveal className="lg:col-span-7 flex flex-col gap-6" delay={0.12}>
             <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-bold text-white flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#caf300]">work_history</span>
+              <span className="material-symbols-outlined text-[#caf300]">
+                work_history
+              </span>
               <span>Professional Experience</span>
             </h3>
 
@@ -40,7 +44,8 @@ export const ExperienceSection: React.FC = () => {
               </div>
 
               <p className="font-['Plus_Jakarta_Sans'] text-[13px] text-[#c5c9ac] leading-relaxed">
-                Spearheaded front-end features and full-stack modules for hospitality and affiliate ecosystems across Africa.
+                Spearheaded front-end features and full-stack modules for
+                hospitality and affiliate ecosystems across Africa.
               </p>
 
               <ul className="flex flex-col gap-3 text-[#c5c9ac] font-['Plus_Jakarta_Sans'] text-[13px]">
@@ -49,7 +54,9 @@ export const ExperienceSection: React.FC = () => {
                     check
                   </span>
                   <span>
-                    Engineered modular affiliate dashboard features, streamlining multi-tier referral tracking and automated payout notifications.
+                    Engineered modular affiliate dashboard features,
+                    streamlining multi-tier referral tracking and automated
+                    payout notifications.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -57,7 +64,9 @@ export const ExperienceSection: React.FC = () => {
                     check
                   </span>
                   <span>
-                    Designed and executed Playwright end-to-end automated testing suites across vital booking workflows, drastically reducing regressions.
+                    Designed and executed Playwright end-to-end automated
+                    testing suites across vital booking workflows, drastically
+                    reducing regressions.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -65,7 +74,8 @@ export const ExperienceSection: React.FC = () => {
                     check
                   </span>
                   <span>
-                    Refactored core state stores and database query pipelines, boosting page response velocity by ~35%.
+                    Refactored core state stores and database query pipelines,
+                    boosting page response velocity by ~35%.
                   </span>
                 </li>
               </ul>
@@ -75,7 +85,9 @@ export const ExperienceSection: React.FC = () => {
           {/* Education Column */}
           <Reveal className="lg:col-span-5 flex flex-col gap-6" delay={0.18}>
             <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-bold text-white flex items-center gap-2">
-              <span className="material-symbols-outlined text-[#caf300]">school</span>
+              <span className="material-symbols-outlined text-[#caf300]">
+                school
+              </span>
               <span>Education</span>
             </h3>
 
@@ -93,10 +105,12 @@ export const ExperienceSection: React.FC = () => {
               </div>
 
               <p className="font-['Plus_Jakarta_Sans'] text-[13px] text-[#c5c9ac] leading-relaxed">
-                Rigorous foundational studies combining analytical problem solving, systems theory, and mathematical modeling, translating directly into clean software engineering.
+                Rigorous foundational studies combining analytical problem
+                solving, systems theory, and mathematical modeling, translating
+                directly into clean software engineering.
               </p>
 
-              <div className="p-3 rounded bg-[#1f2022]/60 border border-[#444932]/30 flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-white">
+              <div className="p-3 rounded dark:bg-[#1f2022]/60 border border-[#444932]/30 flex items-center gap-2 font-['JetBrains_Mono'] text-[11px] text-white">
                 <span className="material-symbols-outlined text-[#caf300] text-[18px]">
                   verified
                 </span>

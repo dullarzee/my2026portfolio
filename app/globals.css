@@ -1,103 +1,155 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --page-bg: #f3f6ee;
+  --page-bg-soft: #edf3ea;
+  --surface: #ffffff;
+  --surface-strong: #eef2ea;
+  --card: rgba(255, 255, 255, 0.8);
+  --card-strong: #ffffff;
+  --heading: #101827;
+  --text: #1f2937;
+  --muted: #4b5b5c;
+  --line: rgba(15, 23, 42, 0.12);
+  --lime: #caf300;
+  --lime-strong: #b0d500;
+  --shadow: rgba(15, 23, 42, 0.09);
+}
+
+html.dark {
+  --page-bg: #0b0d10;
+  --page-bg-soft: #10151a;
+  --surface: #121315;
+  --surface-strong: #1b1c1e;
+  --card: rgba(27, 28, 30, 0.9);
+  --card-strong: #1f2022;
+  --heading: #f5f7fa;
+  --text: #edf2f7;
+  --muted: #c5c9ac;
+  --line: rgba(154, 168, 177, 0.18);
+  --lime: #caf300;
+  --lime-strong: #d8ff5a;
+  --shadow: rgba(0, 0, 0, 0.42);
+}
+
+html {
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) .bg-\[\#121315\],
+html:not(.dark) .bg-\[\#1b1c1e\],
+html:not(.dark) .bg-\[\#1f2022\],
+html:not(.dark) .bg-\[\#292a2c\],
+html:not(.dark) .bg-\[\#343537\],
+html:not(.dark) .dark\:bg-\[\#121315\],
+html:not(.dark) .dark\:bg-\[\#1b1c1e\],
+html:not(.dark) .dark\:bg-\[\#1f2022\] {
+  background-color: var(--surface) !important;
+}
+
+html:not(.dark) .text-\[\#e3e2e5\],
+html:not(.dark) .text-white,
+html:not(.dark) .text-slate-900,
+html:not(.dark) .dark\:text-white,
+html:not(.dark) .dark\:text-\[\#e3e2e5\] {
+  color: var(--heading) !important;
+}
+
+html:not(.dark) .text-\[\#c5c9ac\],
+html:not(.dark) .text-slate-600,
+html:not(.dark) .text-slate-700,
+html:not(.dark) .dark\:text-\[\#c5c9ac\],
+html:not(.dark) .dark\:text-\[\#c5c9ac\]\/80 {
+  color: var(--muted) !important;
+}
+
+html:not(.dark) .border-\[\#444932\]\/60,
+html:not(.dark) .border-\[\#444932\]\/40,
+html:not(.dark) .border-\[\#444932\]\/30,
+html:not(.dark) .border-\[\#292a2c\],
+html:not(.dark) .border-slate-200,
+html:not(.dark) .dark\:border-\[\#343537\],
+html:not(.dark) .dark\:border-\[\#444932\]\/60,
+html:not(.dark) .dark\:border-\[\#444932\]\/40 {
+  border-color: var(--line) !important;
+}
+
+html:not(.dark) .bg-slate-100,
+html:not(.dark) .bg-white\/80,
+html:not(.dark) .bg-white\/90,
+html:not(.dark) .bg-white,
+html:not(.dark) .dark\:bg-\[\#1b1c1e\] {
+  background-color: var(--card) !important;
+}
+
+html:not(.dark) .shadow-\[0_20px_60px_rgba\(15\,23\,42\,0\.08\)\] {
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08) !important;
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@theme {
-  --color-surface: #121315;
-  --color-surface-dim: #121315;
-  --color-surface-bright: #38393b;
-  --color-surface-container-lowest: #0d0e10;
-  --color-surface-container-low: #1b1c1e;
-  --color-surface-container: #1f2022;
-  --color-surface-container-high: #292a2c;
-  --color-surface-container-highest: #343537;
-  --color-surface-variant: #343537;
-  --color-surface-tint: #b0d500;
-  --color-on-surface: #e3e2e5;
-  --color-on-surface-variant: #c5c9ac;
-  --color-inverse-surface: #e3e2e5;
-  --color-inverse-on-surface: #303033;
-  --color-outline: #8f9378;
-  --color-outline-variant: #444932;
-  --color-primary: #ffffff;
-  --color-on-primary: #2a3400;
-  --color-primary-container: #caf300;
-  --color-on-primary-container: #596c00;
-  --color-primary-fixed: #caf300;
-  --color-primary-fixed-dim: #b0d500;
-  --color-on-primary-fixed: #171e00;
-  --color-on-primary-fixed-variant: #3e4c00;
-  --color-inverse-primary: #536600;
-  --color-secondary: #c4c6d0;
-  --color-on-secondary: #2d3038;
-  --color-secondary-container: #464951;
-  --color-on-secondary-container: #b6b8c1;
-  --color-secondary-fixed: #e0e2ec;
-  --color-secondary-fixed-dim: #c4c6d0;
-  --color-on-secondary-fixed: #191c22;
-  --color-on-secondary-fixed-variant: #44474e;
-  --color-tertiary: #ffffff;
-  --color-on-tertiary: #2d303a;
-  --color-tertiary-container: #e0e2ef;
-  --color-on-tertiary-container: #61646f;
-  --color-tertiary-fixed: #e0e2ef;
-  --color-tertiary-fixed-dim: #c4c6d3;
-  --color-on-tertiary-fixed: #181b25;
-  --color-on-tertiary-fixed-variant: #444651;
-  --color-error: #ffb4ab;
-  --color-on-error: #690005;
-  --color-error-container: #93000a;
-  --color-on-error-container: #ffdad6;
-  --color-background: #121315;
-  --color-on-background: #e3e2e5;
-
-  --spacing-space-xs: 0.25rem;
-  --spacing-space-sm: 0.5rem;
-  --spacing-space-md: 1rem;
-  --spacing-space-lg: 1.5rem;
-  --spacing-space-xl: 2.5rem;
-  --spacing-space-2xl: 4rem;
-  --spacing-space-3xl: 6.5rem;
-  --spacing-gutter: 1.5rem;
-  --spacing-gutter-desktop: 2.5rem;
-  --spacing-margin: 1.25rem;
-  --spacing-margin-tablet: 3rem;
-  --spacing-margin-desktop: 5rem;
-
-  --font-display-hero: "Syne", sans-serif;
-  --font-headline-xl: "Syne", sans-serif;
-  --font-headline-lg: "Syne", sans-serif;
-  --font-headline-md: "Syne", sans-serif;
-  --font-headline-sm: "Plus Jakarta Sans", sans-serif;
-  --font-body-xl: "Plus Jakarta Sans", sans-serif;
-  --font-body-md: "Plus Jakarta Sans", sans-serif;
-  --font-body-sm: "Plus Jakarta Sans", sans-serif;
-  --font-label-caps: "JetBrains Mono", monospace;
-  --font-label-md: "JetBrains Mono", monospace;
-  --font-code-inline: "JetBrains Mono", monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--page-bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+html:not(.dark) .bg-\[\#121315\],
+html:not(.dark) .bg-\[\#1b1c1e\],
+html:not(.dark) .bg-\[\#1f2022\],
+html:not(.dark) .bg-\[\#292a2c\],
+html:not(.dark) .bg-\[\#343537\] {
+  background-color: var(--surface) !important;
+}
+
+html:not(.dark) .text-\[\#e3e2e5\],
+html:not(.dark) .text-white {
+  color: var(--heading) !important;
+}
+
+html:not(.dark) .text-\[\#c5c9ac\] {
+  color: var(--muted) !important;
+}
+
+html:not(.dark) .border-\[\#444932\]\/60,
+html:not(.dark) .border-\[\#444932\]\/40,
+html:not(.dark) .border-\[\#444932\]\/30,
+html:not(.dark) .border-\[\#292a2c\],
+html:not(.dark) .border-slate-200 {
+  border-color: var(--line) !important;
+}
+
+html:not(.dark) .bg-slate-100 {
+  background-color: var(--surface-strong) !important;
+}
+
+html:not(.dark) .bg-white\/80,
+html:not(.dark) .bg-white\/90,
+html:not(.dark) .bg-white {
+  background-color: rgba(255, 255, 255, 0.82) !important;
 }
 
 /* Font helpers & typography */
