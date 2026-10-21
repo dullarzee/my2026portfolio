@@ -9,7 +9,7 @@ interface RevealProps extends HTMLMotionProps<"div"> {
   x?: number;
   duration?: number;
   amount?: number;
-  once: boolean;
+  once?: boolean;
 }
 
 export const Reveal: React.FC<RevealProps> = ({
